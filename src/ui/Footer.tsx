@@ -1,4 +1,3 @@
-import { Button } from './button'
 
 export const Footer = () => {
   return (
@@ -12,9 +11,9 @@ export const Footer = () => {
         </div>
 
         {/* checkout button */}
-        <Button disabled variant='default'>
+   {/*      <Button disabled variant='default'>
           Checkout now
-        </Button>
+        </Button> */}
       </div>
     </footer>
   )

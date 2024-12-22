@@ -5,7 +5,7 @@ import {
   forwardRef,
 } from "react";
 
-type LoginLogoutBtnProps = DetailedHTMLProps<
+type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
@@ -20,14 +20,13 @@ const styles = {
   box: base + " w-full text-base py-2 sm:text-xl",
 };
 
-export const LoginLogoutBtn = forwardRef<
-  HTMLButtonElement,
-  LoginLogoutBtnProps
->(({ children, place, ...props }, ref) => {
-  const className = place === "box" ? styles.box : base;
-  return (
-    <button ref={ref} {...props} className={className}>
-      {children}
-    </button>
-  );
-});
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, place, ...props }, ref) => {
+    const className = place === "box" ? styles.box : base;
+    return (
+      <button ref={ref} {...props} className={className}>
+        {children}
+      </button>
+    );
+  },
+);

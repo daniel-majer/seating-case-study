@@ -1,17 +1,16 @@
-import { Seat } from "../Seat"
-import { Button } from "./button"
+import { Seat } from "../components/Seat";
 
 export const Main = () => {
   return (
-    <main className='grow flex flex-col justify-center'>
+    <main className="flex grow flex-col justify-center">
       {/* inner content */}
-      <div className='max-w-screen-xl m-auto p-4 flex items-start grow gap-3 w-full'>
+      <div className="m-auto flex w-full max-w-screen-xl grow items-start gap-3 p-4">
         {/* seating card */}
         <div
-          className='bg-white rounded-md grow grid p-3 self-stretch shadow-sm'
+          className="grid grow self-stretch rounded-md bg-white p-3 shadow-sm"
           style={{
-            gridTemplateColumns: 'repeat(auto-fill, minmax(40px, 1fr))',
-            gridAutoRows: '40px',
+            gridTemplateColumns: "repeat(auto-fill, minmax(40px, 1fr))",
+            gridAutoRows: "40px",
           }}
         >
           {/*	seating map */}
@@ -21,24 +20,24 @@ export const Main = () => {
         </div>
 
         {/* event info */}
-        <aside className='w-full max-w-sm bg-white rounded-md shadow-sm p-3 flex flex-col gap-2'>
+        <aside className="flex w-full max-w-sm flex-col gap-2 rounded-md bg-white p-3 shadow-sm">
           {/* event header image placeholder */}
-          <div className='bg-zinc-100 rounded-md h-32' />
+          <div className="h-32 rounded-md bg-zinc-100" />
           {/* event name */}
-          <h1 className='text-xl text-zinc-900 font-semibold'>[event-name]</h1>
+          <h1 className="text-xl font-semibold text-zinc-900">[event-name]</h1>
           {/* event description */}
-          <p className='text-sm text-zinc-500'>
+          <p className="text-sm text-zinc-500">
             [event-description]: Lorem ipsum dolor sit amet, consectetur
             adipisicing elit. Aliquam aliquid asperiores beatae deserunt dicta
             dolorem eius eos fuga laborum nisi officia pariatur quidem
             repellendus, reprehenderit sapiente, sed tenetur vel voluptatibus?
           </p>
           {/* add to calendar button */}
-          <Button variant='secondary' disabled>
+          {/*         <Button variant="secondary" disabled>
             Add to calendar
-          </Button>
+          </Button> */}
         </aside>
       </div>
     </main>
-  )
-}
+  );
+};
