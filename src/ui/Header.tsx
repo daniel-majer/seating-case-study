@@ -1,8 +1,10 @@
 import { Logo } from "./Logo";
 import { Menu } from "./Menu";
-import { Title } from "./Title";
+import { useEvent } from "@/contexts/EventContext";
 
 export const Header = () => {
+  const { event } = useEvent();
+ 
   return (
     <header className="sticky left-0 right-0 top-0 flex justify-center border-b border-zinc-200 bg-white">
       <nav className="flex max-w-screen-xl grow items-center justify-between gap-3 p-2 py-3 sm:p-4">
@@ -13,7 +15,9 @@ export const Header = () => {
 
         {/* title placeholder */}
         <div className="hidden flex-none basis-auto text-center lg:block">
-          <Title />
+          <h1 className="text-3xl text-purple-950 lg:text-4xl">
+            {event?.namePub}
+          </h1>
         </div>
 
         {/* menu placeholder */}

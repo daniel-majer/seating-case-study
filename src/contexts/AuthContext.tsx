@@ -1,13 +1,6 @@
 import { apiAuth } from "@/services/apiAuth";
 import { useReducer, createContext, useContext, type ReactNode } from "react";
 
-/* const FAKE_USER = {
-  firstName: "Jack",
-  lastName: "Doe",
-  email: "frontend@nfctron.com",
-  password: "Nfctron2025",
-}; */
-
 type User = {
   firstName: string;
   lastName: string;

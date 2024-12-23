@@ -2,12 +2,21 @@ import { Outlet } from "react-router";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
-export const AppLayout = () => {
+import { useEvent } from "@/contexts/EventContext";
+import { Loader } from "./Loader";
+import { Error } from "@/pages/Error";
+
+const AppLayout = () => {
+  const { isLoading, isError } = useEvent();
   return (
-    <div>
+    <div className="flex h-screen flex-col text-zinc-900">
       <Header />
-      <Outlet />
+      {isLoading && <Loader />}
+      {isError && <Error />}
+      {!isLoading && !isError && <Outlet />}
       <Footer />
     </div>
   );
 };
+
+export default AppLayout;
