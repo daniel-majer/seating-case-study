@@ -16,10 +16,17 @@ export const Form = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <Input value={email} onSet={setEmail} type="email" placeholder="Email" />
+      <Input
+        value={email}
+        label="email"
+        onSet={setEmail}
+        type="email"
+        placeholder="Email"
+      />
       <Input
         value={password}
         onSet={setPassword}
+        label="password"
         type="password"
         placeholder="Password"
       />
@@ -31,7 +38,7 @@ export const Form = () => {
           Forget your password?
         </span>
       </a>
-      <Button place="box">Login</Button>
+      <Button width="full">Login</Button>
     </form>
   );
 };

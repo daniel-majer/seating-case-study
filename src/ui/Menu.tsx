@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useUser } from "@/contexts/AuthContext";
 
@@ -11,45 +11,29 @@ import { ThemeIcon } from "./ThemeIcon";
 import { Button } from "./Button";
 import { CartMenu } from "./CartMenu";
 import { Loader } from "./Loader";
+import { useCart } from "@/contexts/CartContext";
+import { useNavigate } from "react-router";
 
 export const Menu = () => {
   const [isOpenLog, setIsOpenLog] = useState(false);
   const [isOpenCart, setIsOpenCart] = useState(false);
 
-  const loginBoxRef = useRef<HTMLDivElement>(null);
-  const loginBtnRef = useRef<HTMLButtonElement>(null);
-  const logoutDivRef = useRef<HTMLDivElement>(null);
-  const logoutBoxRef = useRef<HTMLDivElement>(null);
-  const cartBoxRef = useRef<HTMLDivElement>(null);
-  const cartBtnRef = useRef<HTMLButtonElement>(null);
-
   const { user, isAuthenticated, isLoading, logout, isError } = useUser();
+  const { checkout, isCheckout } = useCart();
+  const navigate = useNavigate();
 
   useEffect(
     function () {
-      if (user) setIsOpenLog((toggle) => !toggle);
+      if (isAuthenticated) setIsOpenLog(() => false);
     },
-    [user],
+    [isAuthenticated],
   );
 
   useOutsideClick({
-    boxRef: loginBoxRef,
-    refButton: loginBtnRef,
-    setIsOpen: setIsOpenLog,
-    isOpen: isOpenLog,
-  });
-  useOutsideClick({
-    boxRef: logoutBoxRef,
-    refButton: logoutDivRef,
-    setIsOpen: setIsOpenLog,
-    isOpen: isOpenLog,
-  });
-
-  useOutsideClick({
-    boxRef: cartBoxRef,
-    refButton: cartBtnRef,
-    setIsOpen: setIsOpenCart,
-    isOpen: isOpenCart,
+    setIsOpenLog,
+    isOpenLog,
+    isOpenCart,
+    setIsOpenCart,
   });
 
   const handleToggleLog = () => {
@@ -58,11 +42,18 @@ export const Menu = () => {
   };
 
   const handleToggleCart = () => {
+    if (isOpenLog) setIsOpenLog(false);
     setIsOpenCart((prev) => !prev);
   };
 
   function handleLogout(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
+    if (isCheckout) {
+      navigate("/");
+      checkout();
+    }
+
+    setIsOpenLog(false);
     logout();
   }
 
@@ -70,22 +61,22 @@ export const Menu = () => {
     <>
       <LangIcon />
       <ThemeIcon />
-      <CartIcon onSetCart={handleToggleCart} ref={cartBtnRef} />
+      <CartIcon onSetCart={handleToggleCart} />
 
       {isOpenCart && (
-        <Box ref={cartBoxRef}>
+        <Box type="cart">
           <CartMenu />
         </Box>
       )}
 
       {isAuthenticated ? (
         <>
-          <LoginGreet onSetToggle={handleToggleLog} ref={logoutDivRef} />
+          <LoginGreet onSetToggle={handleToggleLog} />
 
           {isOpenLog && (
-            <Box type="logout" ref={logoutBoxRef}>
+            <Box type="logout">
               <span className="mb-2 inline-block break-all">{user?.email}</span>
-              <Button place="box" onClick={handleLogout}>
+              <Button width="full" onClick={handleLogout}>
                 Logout
               </Button>
             </Box>
@@ -93,13 +84,15 @@ export const Menu = () => {
         </>
       ) : (
         <>
-          <Button onClick={handleToggleLog} ref={loginBtnRef}>
+          <Button  onClick={handleToggleLog}>
             Login
           </Button>
           {isOpenLog && (
-            <Box ref={loginBoxRef}>
+            <Box type="login">
               {isLoading && !isError ? <Loader /> : <Form />}
-              {isError && <p className="pt-2">Ups. Vyskytla sa chyba. Skús znovu.</p>}
+              {isError && (
+                <p className="pt-2">Ups. Vyskytla sa chyba. Skús znovu.</p>
+              )}
             </Box>
           )}
         </>

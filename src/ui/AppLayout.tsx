@@ -8,8 +8,9 @@ import { Error } from "@/pages/Error";
 
 const AppLayout = () => {
   const { isLoading, isError } = useEvent();
+
   return (
-    <div className="flex h-screen flex-col text-zinc-900">
+    <div className="flex h-screen flex-col justify-between text-zinc-900">
       <Header />
       {isLoading && <Loader />}
       {isError && <Error />}

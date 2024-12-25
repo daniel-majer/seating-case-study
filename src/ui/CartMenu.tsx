@@ -1,39 +1,11 @@
 import { Trash2 } from "lucide-react";
 import { Button } from "./Button";
-
-const cart = [
-  {
-    id: "12b7b37f-6ee2-4513-ac40-b5fdsffds",
-    name: "Regular ticket",
-    price: 1000,
-    seatRow: 3,
-    place: 12,
-  },
-  {
-    id: "12b7b37f-6ee2-4513-ac40-b55efdsfds19b",
-    name: "VIP ticket",
-    price: 2000,
-    seatRow: 1,
-    place: 1,
-  },
-  {
-    id: "12b7b37f-6ee2-4513-ac40-b55ebgfdghfd9b",
-    name: "Regular ticket",
-    price: 1000,
-    seatRow: 3,
-    place: 7,
-  },
-  {
-    id: "12b7b37f-6ee2-4513-ac40-b5fsdfaa19b",
-    name: "VIP ticket",
-    price: 2000,
-    seatRow: 8,
-    place: 3,
-  },
-];
+import { useCart } from "@/contexts/CartContext";
 
 export const CartMenu = () => {
-  if (!cart.length)
+  const { tickets, totalPrice, deleteItem, clearCart, isCheckout } = useCart();
+
+  if (!tickets.length)
     return (
       <p className="py-4 text-center">
         Your cart is currently empty. <br /> Start{" "}
@@ -43,30 +15,54 @@ export const CartMenu = () => {
 
   return (
     <>
-      <ul className="mb-5 divide-y divide-purple-500">
-        {cart.map((ticket) => {
+      <ul className="mb-2 divide-y divide-purple-500 text-xs sm:mb-5 sm:text-base">
+        {tickets.map((ticket) => {
           return (
             <li
-              key={ticket.id}
+              key={ticket.seatId}
               className="flex items-center justify-between py-1"
             >
-              <strong className="w-28">{ticket.name}</strong>
+              <strong className="w sm:w-28">{ticket.typeName}</strong>
               <span className="px-2">
-                Seat row: <strong>{ticket.seatRow}</strong>
+                Row: <strong>{ticket.row}</strong> | Seat:{" "}
+                <strong>{ticket.seat}</strong>
               </span>
               <span className="px-2">
-                Price: <strong>{ticket.price} CZK</strong>
+                Price:
+                <strong>
+                  {ticket.price}
+                  CZK
+                </strong>
               </span>
-              <Trash2 className="w-6" color="red" size={16} strokeWidth={2} />
+              <Trash2
+                className={`delete w-4 sm:w-6 ${isCheckout ? "cursor-not-allowed text-gray-400" : "cursor-pointer text-red-500"}`}
+                size={16}
+                strokeWidth={2}
+                onClick={() => deleteItem(ticket.seatId ? ticket.seatId : "")}
+              />
             </li>
           );
         })}
       </ul>
 
-      <div className="flex justify-between">
-        <Button>Clear cart</Button>
-        <span className="">
-          Spolu: <strong>10 000 CZK</strong>
+      <div className="flex justify-between text-xs sm:text-base">
+        <Button
+          style={
+            isCheckout
+              ? {
+                  backgroundImage: "none",
+                  backgroundColor: "rgb(156 163 175)",
+                  cursor: "not-allowed",
+                  transform: "scale(1)",
+                }
+              : {}
+          }
+          onClick={clearCart}
+        >
+          Clear cart
+        </Button>
+        <span className="sm:mr-11">
+          Summary: <strong>{totalPrice} CZK</strong>
         </span>
       </div>
     </>

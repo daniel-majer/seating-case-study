@@ -21,7 +21,7 @@ export const Header = () => {
         </div>
 
         {/* menu placeholder */}
-        <div className="flex items-center justify-end gap-1 sm:gap-4">
+        <div className="flex items-center justify-end gap-2 sm:gap-4">
           <Menu />
         </div>
       </nav>

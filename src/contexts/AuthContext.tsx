@@ -25,7 +25,6 @@ type AuthAction =
   | { type: "rejected" };
 
 type AuthContextType = AuthState & {
-  /* dispatch: React.Dispatch<AuthAction>; */
   login: (email: string, password: string) => void;
   logout: () => void;
 };
