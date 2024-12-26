@@ -6,13 +6,14 @@ import { LoginGreet } from "./LoginGreet";
 import { Box } from "./Box";
 import { Form } from "./Form";
 import { CartIcon } from "./CartIcon";
-import { LangIcon } from "./LangIcon";
-import { ThemeIcon } from "./ThemeIcon";
+import { LangIcon } from "./MultiLanguage";
+import { DarkTheme } from "./DarkTheme";
 import { Button } from "./Button";
 import { CartMenu } from "./CartMenu";
 import { Loader } from "./Loader";
 import { useCart } from "@/contexts/CartContext";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 export const Menu = () => {
   const [isOpenLog, setIsOpenLog] = useState(false);
@@ -21,6 +22,7 @@ export const Menu = () => {
   const { user, isAuthenticated, isLoading, logout, isError } = useUser();
   const { checkout, isCheckout } = useCart();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(
     function () {
@@ -60,7 +62,7 @@ export const Menu = () => {
   return (
     <>
       <LangIcon />
-      <ThemeIcon />
+      <DarkTheme />
       <CartIcon onSetCart={handleToggleCart} />
 
       {isOpenCart && (
@@ -77,22 +79,18 @@ export const Menu = () => {
             <Box type="logout">
               <span className="mb-2 inline-block break-all">{user?.email}</span>
               <Button width="full" onClick={handleLogout}>
-                Logout
+                {t("log.logout")}
               </Button>
             </Box>
           )}
         </>
       ) : (
         <>
-          <Button  onClick={handleToggleLog}>
-            Login
-          </Button>
+          <Button onClick={handleToggleLog}> {t("log.login")}</Button>
           {isOpenLog && (
             <Box type="login">
               {isLoading && !isError ? <Loader /> : <Form />}
-              {isError && (
-                <p className="pt-2">Ups. Vyskytla sa chyba. Skús znovu.</p>
-              )}
+              {isError && <p className="pt-2"> {t("log.error")}</p>}
             </Box>
           )}
         </>

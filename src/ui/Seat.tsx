@@ -4,14 +4,16 @@ import { ButtonPop } from "./ButtonPop";
 import { useEvent } from "@/contexts/EventContext";
 import { useCart } from "@/contexts/CartContext";
 import { Item } from "../contexts/EventContext";
+import { useTranslation } from "react-i18next";
 
 interface SeatProps extends React.HTMLAttributes<HTMLElement> {
   place: Item;
 }
 
 export const Seat = ({ place }: SeatProps) => {
-  const { event, tickets: t } = useEvent();
+  const { event } = useEvent();
   const { addItem, deleteItem, tickets } = useCart();
+  const { t } = useTranslation();
 
   const isInCart = tickets.some((seat) => seat.seatId === place.seatId);
   const isOccupied = place.ticketTypeId === "Occupied";
@@ -41,7 +43,7 @@ export const Seat = ({ place }: SeatProps) => {
   return (
     <Popover>
       <PopoverTrigger
-        className={`transition-color flex aspect-square max-w-10 flex-1 items-center justify-center rounded-full ${isOccupied ? "cursor-not-allowed bg-red-400 text-slate-200 hover:bg-red-400" : ""} ${isInCart ? "bg-purple-500 text-slate-100" : ""} ${!isOccupied && !isInCart ? "cursor-pointer bg-zinc-200 text-zinc-400 hover:bg-zinc-300" : ""}`}
+        className={`flex aspect-square max-w-10 flex-1 items-center justify-center rounded-full transition duration-500 ${isOccupied ? "cursor-not-allowed bg-red-400 text-slate-200 hover:bg-red-400 dark:bg-red-500 dark:text-white" : ""} ${isInCart ? "bg-purple-500 text-slate-100 dark:text-white" : ""} ${!isOccupied && !isInCart ? "cursor-pointer bg-zinc-200 text-zinc-400 hover:bg-zinc-300 dark:bg-white dark:text-slate-800 dark:hover:bg-purple-500 dark:hover:text-white" : ""}`}
         onClick={(e) => {
           if (isOccupied) {
             e.preventDefault();
@@ -51,13 +53,18 @@ export const Seat = ({ place }: SeatProps) => {
       >
         <span className="text-xs font-medium">{place.place}</span>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="dark:bg-slate-300 dark:text-black">
         <>
           <p>
-            <strong>{place.ticketName}</strong>
+            <strong>
+              {place.ticketName === "VIP ticket"
+                ? t("addCart.ticketName2", { name: place.ticketName })
+                : t("addCart.ticketName", { name: place.ticketName })}
+            </strong>
           </p>
           <p>
-            {place.row}. row | {place.place} seat
+            {place.row}. {t("addCart.ticketRow")} | {place.place}{" "}
+            {t("addCart.ticketSeat")}
           </p>
           <span>
             {place.price} {event?.currencyIso}
@@ -70,8 +77,9 @@ export const Seat = ({ place }: SeatProps) => {
               onClick={() => deleteFromCart()}
               variant="destructive"
               size="sm"
+              className="bg-red-400 dark:bg-red-500"
             >
-              Remove from cart
+              {t("removeCart")}
             </ButtonPop>
           ) : (
             <ButtonPop
@@ -80,7 +88,7 @@ export const Seat = ({ place }: SeatProps) => {
               size="sm"
               className="bg-gradient-to-r from-blue-500 to-purple-500 transition duration-300 ease-in-out hover:scale-105 hover:from-purple-500 hover:to-blue-500 dark:text-gray-300"
             >
-              Add to cart
+              {t("addCart.add")}
             </ButtonPop>
           )}
         </footer>

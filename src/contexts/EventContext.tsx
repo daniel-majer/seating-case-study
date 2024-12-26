@@ -146,8 +146,6 @@ function EventProvider({ children }: { children: ReactNode }) {
     };
   });
 
-  console.log(fullSeatsDetails);
-
   return (
     <EvContext.Provider
       value={{ event, tickets, isLoading, isError, fullSeatsDetails }}

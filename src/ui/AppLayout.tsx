@@ -10,7 +10,7 @@ const AppLayout = () => {
   const { isLoading, isError } = useEvent();
 
   return (
-    <div className="flex h-screen flex-col justify-between text-zinc-900">
+    <div className="flex h-screen flex-col justify-between text-zinc-900 transition-all duration-500 dark:bg-slate-600">
       <Header />
       {isLoading && <Loader />}
       {isError && <Error />}

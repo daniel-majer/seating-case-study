@@ -1,15 +1,22 @@
 import { Trash2 } from "lucide-react";
 import { Button } from "./Button";
 import { useCart } from "@/contexts/CartContext";
+import { Trans, useTranslation } from "react-i18next";
 
 export const CartMenu = () => {
   const { tickets, totalPrice, deleteItem, clearCart, isCheckout } = useCart();
+  const { t } = useTranslation();
 
   if (!tickets.length)
     return (
       <p className="py-4 text-center">
-        Your cart is currently empty. <br /> Start{" "}
-        <strong>shopping now!</strong>
+        <Trans
+          i18nKey="cartMenu.empty"
+          components={{
+            br: <br />,
+            strong: <strong />,
+          }}
+        />
       </p>
     );
 
@@ -22,13 +29,17 @@ export const CartMenu = () => {
               key={ticket.seatId}
               className="flex items-center justify-between py-1"
             >
-              <strong className="w sm:w-28">{ticket.typeName}</strong>
-              <span className="px-2">
-                Row: <strong>{ticket.row}</strong> | Seat:{" "}
-                <strong>{ticket.seat}</strong>
+              <strong className="flex-1">
+                {ticket.typeName === "VIP ticket"
+                  ? t("cartMenu.name2", { name: ticket.typeName })
+                  : t("cartMenu.name", { name: ticket.typeName })}
+              </strong>
+              <span className="px-2 ">
+                {t("cartMenu.row")}: <strong>{ticket.row}</strong> |{" "}
+                {t("cartMenu.seat")}:<strong>{ticket.seat}</strong>
               </span>
               <span className="px-2">
-                Price:
+                {t("cartMenu.price")}:
                 <strong>
                   {ticket.price}
                   CZK
@@ -59,10 +70,10 @@ export const CartMenu = () => {
           }
           onClick={clearCart}
         >
-          Clear cart
+          {t("cartMenu.clear")}
         </Button>
         <span className="sm:mr-11">
-          Summary: <strong>{totalPrice} CZK</strong>
+          {t("cartMenu.summary")}: <strong>{totalPrice} CZK</strong>
         </span>
       </div>
     </>

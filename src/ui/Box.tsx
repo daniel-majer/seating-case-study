@@ -6,7 +6,7 @@ type BoxProps = {
 };
 
 const base =
-  "absolute top-10 w-full max-w-60 rounded-lg border border-purple-500 bg-gray-300 px-2 pb-4 pt-2 text-sm text-gray-900 sm:top-14 sm:max-w-96 sm:rounded-xl sm:px-8 sm:text-base";
+  "absolute top-10 w-full max-w-60 rounded-lg border border-purple-500 bg-gray-300 dark:bg-slate-400 transition duration-500 px-2 pb-4 pt-2 text-sm text-gray-900 sm:top-14 sm:max-w-96 sm:rounded-xl sm:px-8 sm:text-base";
 
 const styles = {
   logout: base + " h-fit",

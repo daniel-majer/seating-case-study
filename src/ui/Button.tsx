@@ -12,7 +12,7 @@ type ButtonProps = DetailedHTMLProps<
 };
 
 const base =
-  "sm:rounded-lg rounded-md p-1 sm:px-4 px-1 text-xs text-white transition duration-300 ease-in-out hover:scale-105 hover:from-purple-500 hover:to-blue-500 dark:text-gray-300 sm:text-base ";
+  "sm:rounded-lg rounded-md p-1 sm:px-4 px-1 text-xs text-white transition duration-300 ease-in-out hover:scale-105 hover:from-purple-500 hover:to-blue-500 sm:text-base dark:text-white";
 
 const styles = {
   full: base + " w-full text-base py-3 sm:text-xl",

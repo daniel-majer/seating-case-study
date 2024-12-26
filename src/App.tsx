@@ -5,7 +5,7 @@ import { Checkout } from "./pages/Checkout";
 import { Error } from "./pages/Error";
 import { lazy, Suspense } from "react";
 import { SpinnerFullPage } from "./ui/SpinnerFullPage";
-import { Main } from "./pages/Main";
+import { Main } from "./pages/Home";
 
 const AppLayout = lazy(() => import("./ui/AppLayout"));
 const Login = lazy(() => import("./pages/Login"));

@@ -3,6 +3,7 @@ import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/ui/Button";
 import { Input } from "@/ui/Input";
 import { FormEvent, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, isAuthenticated, isError } = useUser();
   const { tickets, checkout, isCheckout } = useCart();
+  const { t } = useTranslation();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -61,30 +63,32 @@ const Login = () => {
                 <Input
                   type="password"
                   label="password"
-                  placeholder="Password"
+                  placeholder={t("login.password")}
                   value={password}
                   onSet={setPassword}
                 />
 
                 <a className="group text-blue-400 transition-all duration-100 ease-in-out">
                   <span className="bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-left-bottom bg-no-repeat text-sm transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]">
-                    Forget your password?
+                    {t("login.forget")}
                   </span>
                 </a>
 
-                <Button width="full">LOG IN</Button>
+                <Button width="full">{t("login.login")}</Button>
                 {isError && (
-                  <p className="text-red-500">Ups. Vyskytla sa chyba. Skús to znovu.</p>
+                  <p className="text-red-500">
+                    Ups. Vyskytla sa chyba. Skús to znovu.
+                  </p>
                 )}
               </form>
 
               {/* ******************************************************************* */}
               <div className="mt-4 flex flex-col items-center justify-center">
-                <span>or</span>
+                <span>{t("login.or")}</span>
                 <h3 onClick={handleGuest} className="dark:text-gray-300">
                   <a className="group text-blue-400 transition-all duration-100 ease-in-out">
                     <span className="cursor-pointer bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-left-bottom bg-no-repeat text-2xl font-bold transition-all duration-500 ease-out group-hover:bg-[length:100%_2px] sm:text-3xl">
-                      Continue as a guest!
+                      {t("login.guest")}
                     </span>
                   </a>
                 </h3>
@@ -136,23 +140,6 @@ const Login = () => {
                     alt="apple"
                   />
                 </button>
-              </div>
-
-              <div className="mt-4 flex flex-col items-center text-center text-sm text-gray-500">
-                <p className="cursor-default">
-                  By signing in, you agree to our
-                  <a className="group text-blue-400 transition-all duration-100 ease-in-out">
-                    <span className="cursor-pointer bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]">
-                      Terms
-                    </span>
-                  </a>
-                  and
-                  <a className="group text-blue-400 transition-all duration-100 ease-in-out">
-                    <span className="cursor-pointer bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]">
-                      Privacy Policy
-                    </span>
-                  </a>
-                </p>
               </div>
             </div>
           </div>
