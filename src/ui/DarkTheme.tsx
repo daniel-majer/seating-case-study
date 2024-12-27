@@ -3,7 +3,7 @@ import { Moon, Sun } from "lucide-react";
 
 export const DarkTheme = () => {
   const [isDarkTheme, handleTheme] = useDarkTheme();
-  console.log(isDarkTheme, localStorage.getItem("darkTheme"));
+
   return (
     <button
       onClick={() => handleTheme()}

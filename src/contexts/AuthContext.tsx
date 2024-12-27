@@ -1,5 +1,11 @@
 import { apiAuth } from "@/services/apiAuth";
-import { useReducer, createContext, useContext, type ReactNode } from "react";
+import {
+  useReducer,
+  createContext,
+  useContext,
+  type ReactNode,
+  useCallback,
+} from "react";
 
 type User = {
   firstName: string;
@@ -22,11 +28,13 @@ type AuthAction =
     }
   | { type: "logout" }
   | { type: "loading" }
-  | { type: "rejected" };
+  | { type: "rejected" }
+  | { type: "resetError" };
 
 type AuthContextType = AuthState & {
   login: (email: string, password: string) => void;
   logout: () => void;
+  resetError: () => void;
 };
 
 const initState: AuthState = {
@@ -51,6 +59,8 @@ function reducer(state: AuthState, action: AuthAction) {
       return { ...state, isLoading: true };
     case "rejected":
       return { ...state, isLoading: false, isError: true };
+    case "resetError":
+      return { ...state, isLoading: false, isError: false };
     default:
       throw new Error("Unknown action");
   }
@@ -79,11 +89,16 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "logout" });
   }
 
+  const resetError = useCallback(() => {
+    dispatch({ type: "resetError" });
+  }, [dispatch]);
+
   return (
     <AuthContext.Provider
       value={{
         isLoading,
         isError,
+        resetError,
         user,
         isAuthenticated,
         login,

@@ -1,0 +1,55 @@
+{
+   "log":{
+      "login":"Přihlásit",
+      "logout":"Odhlásit",
+      "error":"Oops. Došlo k chybě. Zkontrolujte své údaje a zkuste to znovu."
+   },
+   "eventDetails":{
+      "description":"{{eventDescription}}",
+      "more":"Zobrazit více",
+      "less":"Zobrazit méně",
+      "date":"{{eventDate}}",
+      "calendar":"Přidat do kalendáře"
+   },
+   "addCart":{
+      "ticketName":"Základní vstupenka",
+      "ticketName2":"VIP vstupenka",
+      "ticketSeat":"místo",
+      "ticketRow":"řada",
+      "add":"Přidat do košíku"
+   },
+   "removeCart":"Odebrat z košíku",
+   "footer":{
+      "checkoutBtn":{
+         "order":"Objednat",
+         "checkout":"Checkout"
+      },
+      "total_one":"Celkem za {{count}} jízdenku",
+      "total_other":"Celkem za {{count}} jízdenky"
+   },
+   "cartMenu":{
+      "row":"Řada",
+      "seat":"Místo",
+      "name":"Základní vstupenka",
+      "name2":"VIP vstupenka",
+      "price":"Cena",
+      "summary":"Celkem",
+      "clear":"Vyprázdnit košík",
+      "empty":"Váš košík je momentálně prázdný. <br /> Začněte <strong>nakupovat nyní!</strong>"
+   },
+   "login":{
+      "password":"Heslo",
+      "guest":"Pokračujte jako host!",
+      "or":"alebo",
+      "forget":"Zapomněli jste své heslo ?",
+      "login":"Přihlásit"
+   },
+   "checkout":{
+      "firstName":"Křestní jméno",
+      "lastName":"Příjmení",
+      "order":"Vaše objednávka",
+      "email":"Ujistěte se, že máte stabilní internetové připojení a vyplněný e-mail, který je povinný.",
+      "addFirst":"Nejprve přidejte vstupenku do košíku!",
+      "goShop":"Jděte nakupovat!"
+   }
+}

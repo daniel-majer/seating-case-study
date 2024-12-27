@@ -5,7 +5,7 @@ import { Checkout } from "./pages/Checkout";
 import { Error } from "./pages/Error";
 import { lazy, Suspense } from "react";
 import { SpinnerFullPage } from "./ui/SpinnerFullPage";
-import { Main } from "./pages/Home";
+import { Event } from "./pages/Event";
 
 const AppLayout = lazy(() => import("./ui/AppLayout"));
 const Login = lazy(() => import("./pages/Login"));
@@ -15,7 +15,7 @@ function App() {
     <Suspense fallback={<SpinnerFullPage />}>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route index element={<Main />} />
+          <Route index element={<Event />} />
           <Route path="checkout" element={<Checkout />} />
         </Route>
         <Route path="login" element={<Login />} />

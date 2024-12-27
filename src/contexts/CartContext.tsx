@@ -1,14 +1,10 @@
-import { createContext, type ReactNode, useContext, useReducer } from "react";
-/*   {
-      eventId: string,
-      seatId: string,
-      ticketTypeId: string
-      price: number,
-      row: number,
-      seat: number,
-      currency: string,
-      typeName: string
-    };*/
+import {
+  createContext,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useReducer,
+} from "react";
 
 type CartContextType = {
   tickets: Ticket[];
@@ -17,7 +13,7 @@ type CartContextType = {
   addItem: (item: Ticket) => void;
   deleteItem: (id: string) => void;
   clearCart: () => void;
-  checkout: () => void;
+  setIsCheckout: () => void;
 };
 
 type Ticket = {
@@ -64,7 +60,7 @@ function reducer(state: CartState, action: CartAction): CartState {
     case "checkout":
       return { ...state, isCheckout: !state.isCheckout };
     case "reset":
-      return state.isCheckout ? state : initState;
+      return initState;
     default:
       throw new Error("Unknown action");
   }
@@ -91,12 +87,13 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   function clearCart() {
+    if (isCheckout) return;
     dispatch({ type: "reset" });
   }
 
-  function checkout() {
+  const setIsCheckout = useCallback(() => {
     dispatch({ type: "checkout" });
-  }
+  }, [dispatch]);
 
   return (
     <CartContext.Provider
@@ -106,7 +103,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         addItem,
         deleteItem,
         clearCart,
-        checkout,
+        setIsCheckout,
         isCheckout,
       }}
     >

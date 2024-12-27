@@ -34,16 +34,12 @@ export const CartMenu = () => {
                   ? t("cartMenu.name2", { name: ticket.typeName })
                   : t("cartMenu.name", { name: ticket.typeName })}
               </strong>
-              <span className="px-2 ">
+              <span className="px-2">
                 {t("cartMenu.row")}: <strong>{ticket.row}</strong> |{" "}
-                {t("cartMenu.seat")}:<strong>{ticket.seat}</strong>
+                {t("cartMenu.seat")}: <strong>{ticket.seat}</strong>
               </span>
               <span className="px-2">
-                {t("cartMenu.price")}:
-                <strong>
-                  {ticket.price}
-                  CZK
-                </strong>
+                {t("cartMenu.price")}: <strong>{ticket.price} CZK</strong>
               </span>
               <Trash2
                 className={`delete w-4 sm:w-6 ${isCheckout ? "cursor-not-allowed text-gray-400" : "cursor-pointer text-red-500"}`}
@@ -72,7 +68,7 @@ export const CartMenu = () => {
         >
           {t("cartMenu.clear")}
         </Button>
-        <span className="sm:mr-11">
+        <span className="mr-6 sm:mr-8">
           {t("cartMenu.summary")}: <strong>{totalPrice} CZK</strong>
         </span>
       </div>

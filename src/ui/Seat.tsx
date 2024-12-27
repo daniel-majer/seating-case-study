@@ -3,7 +3,7 @@ import React from "react";
 import { ButtonPop } from "./ButtonPop";
 import { useEvent } from "@/contexts/EventContext";
 import { useCart } from "@/contexts/CartContext";
-import { Item } from "../contexts/EventContext";
+import { type Item } from "../contexts/EventContext";
 import { useTranslation } from "react-i18next";
 
 interface SeatProps extends React.HTMLAttributes<HTMLElement> {
@@ -30,8 +30,6 @@ export const Seat = ({ place }: SeatProps) => {
       typeName: place.ticketName,
     };
 
-    console.log(newTicket, t);
-
     if (isInCart) return;
     addItem(newTicket);
   }
@@ -43,11 +41,10 @@ export const Seat = ({ place }: SeatProps) => {
   return (
     <Popover>
       <PopoverTrigger
-        className={`flex aspect-square max-w-10 flex-1 items-center justify-center rounded-full transition duration-500 ${isOccupied ? "cursor-not-allowed bg-red-400 text-slate-200 hover:bg-red-400 dark:bg-red-500 dark:text-white" : ""} ${isInCart ? "bg-purple-500 text-slate-100 dark:text-white" : ""} ${!isOccupied && !isInCart ? "cursor-pointer bg-zinc-200 text-zinc-400 hover:bg-zinc-300 dark:bg-white dark:text-slate-800 dark:hover:bg-purple-500 dark:hover:text-white" : ""}`}
+        className={`flex aspect-square max-w-10 flex-1 items-center justify-center rounded-full transition duration-500 ${isOccupied ? "cursor-not-allowed bg-red-400 text-slate-200 hover:bg-red-400 dark:bg-red-500 dark:text-white" : ""} ${isInCart ? "bg-purple-500 text-slate-100 dark:text-white" : ""} ${!isOccupied && !isInCart ? "bg-zinc-200 text-zinc-400 hover:bg-zinc-300 dark:bg-white dark:text-slate-800 dark:hover:bg-purple-500 dark:hover:text-white" : ""}`}
         onClick={(e) => {
           if (isOccupied) {
             e.preventDefault();
-            e.stopPropagation();
           }
         }}
       >

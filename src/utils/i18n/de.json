@@ -1,0 +1,55 @@
+{
+  "log": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "error": "Hoppla. Es ist ein Fehler aufgetreten. Überprüfen Sie Ihre Anmeldedaten und versuchen Sie es erneut."
+  },
+  "eventDetails": {
+    "description": "NFCtron hat seine Dienste bei 417 Veranstaltungen im Jahr 2023 eingesetzt, wir sind offiziell in die Slowakei eingetreten und haben bequeme Kartenzahlungen auf ausgewählte Veranstaltungen ausgeweitet. 2024 wird ein Wendepunkt in der Geschichte von NFCtron sein, mit der Einführung einer neuen mobilen App für Festivalbesucher, fortschrittlichen Analysetools im NFCtron Hub und neuen Ticketing-Optionen durch NFCtron Tickets. In Zusammenarbeit mit Mastercard werden wir die Projekte NFCtron Nebula und NFCtron Nautilus in die Realität umsetzen. Wir stellen neue Partnerschaften mit der Komerční banka und T-Mobile vor. Wir werden 12.000.000 CZK unter den Festivals für Projekte verteilen, die das Besuchererlebnis bei Veranstaltungen verbessern werden.",
+    "more": "Mehr anzeigen",
+    "less": "Weniger anzeigen",
+    "date": "Sonntag, 1. Juni 2025 um 14:00 Uhr",
+    "calendar": "Zum Kalender hinzufügen"
+  },
+  "addCart": {
+    "ticketName": "Basis ticket",
+    "ticketName2": "VIP ticket",
+    "ticketSeat": "sitzplatz",
+    "ticketRow": "zeile",
+    "add": "Zum Warenkorb hinzufügen"
+  },
+  "removeCart": "Aus dem Warenkorb entfernen",
+  "footer": {
+    "checkoutBtn": {
+      "order": "Jetzt bestellen",
+      "checkout": "Checkout"
+    },
+    "total_one": "Gesamtbetrag für  {{count}} ticket",
+    "total_other": "Gesamtbetrag für  {{count}} tickets"
+  },
+  "cartMenu": {
+    "row": "Reihe",
+    "seat": "Sitz",
+    "name": "Basis ticket",
+    "name2": "VIP ticket",
+    "price": "Preis",
+    "summary": "Zusammenfassung",
+    "clear": "Warenkorb leeren",
+    "empty": "Ihr Warenkorb ist derzeit leer. <br /> <strong>Starten Sie jetzt Ihren Einkauf!</strong>"
+  },
+  "login": {
+    "password": "Passwort",
+    "guest": "Als Gast fortfahren!",
+    "or": "oder",
+    "forget": "Passwort vergessen ?",
+    "login": "Anmelden"
+  },
+  "checkout": {
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "order": "Ihre Bestellung",
+    "email": "Stellen Sie sicher, dass Sie eine stabile Internetverbindung und eine ausgefüllte E-Mail-Adresse haben, die obligatorisch ist.",
+    "addFirst": "Legen Sie zuerst ein Ticket in den Warenkorb!",
+    "goShop": "Zum Einkauf!"
+  }
+}

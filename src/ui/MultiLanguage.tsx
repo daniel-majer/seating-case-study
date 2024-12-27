@@ -3,7 +3,7 @@ import { Globe } from "lucide-react";
 import { useState, type ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 
-export const LangIcon = () => {
+export const MultiLanguage = () => {
   const [lang, setLang] = useState(
     () => localStorage.getItem("i18nextLng") || "cz",
   );
@@ -15,7 +15,7 @@ export const LangIcon = () => {
   }
 
   return (
-    <div className="relative flex h-6 cursor-pointer items-center rounded-full bg-gray-200 px-2 transition duration-300 hover:scale-105 sm:h-8">
+    <div className="relative flex h-6 cursor-pointer items-center rounded-full bg-gray-200 sm:px-2 px-1 transition duration-300 hover:scale-105 sm:h-8">
       <label className="cursor-pointer" htmlFor="lang">
         <Globe color="#3B0764" strokeWidth={2} size={16} />
       </label>

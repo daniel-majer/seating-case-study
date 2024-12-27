@@ -1,0 +1,55 @@
+{
+  "log": {
+    "login": "Login",
+    "logout": "Logout",
+    "error": "Oops. There's been an error. Check your credentials and try again."
+  },
+  "eventDetails": {
+    "description": "NFCtron deployed its services at 417 events in 2023, we officially entered Slovakia and extended convenient card payments to selected events. 2024 will be a watershed year in the NFCtron story, with the introduction of a new mobile app for festival-goers, advanced analytics tools in the NFCtron Hub and new ticketing options through NFCtron Tickets. In collaboration with Mastercard, we will move the NFCtron Nebula and NFCtron Nautilus projects towards reality. Introducing new partnerships with Komerční banka and T-Mobile. We will distribute CZK 12,000,000 among festivals for projects that will improve the visitor experience at events.",
+    "more": "Show more",
+    "less": "Show less",
+    "date": "Sunday 1 June 2025 at 14:00",
+    "calendar": "Add to calendar"
+  },
+  "addCart": {
+    "ticketName": "{{name}}",
+    "ticketName2": "{{name}}",
+    "ticketSeat": "seat",
+    "ticketRow": "row",
+    "add": "Add to cart"
+  },
+  "removeCart": "Remove from cart",
+  "footer": {
+    "checkoutBtn": {
+      "order": "Order now",
+      "checkout": "Checkout"
+    },
+    "total_one": "Total for {{count}} ticket",
+    "total_other": "Total for {{count}} tickets"
+  },
+  "cartMenu": {
+    "row": "Row",
+    "seat": "Seat",
+    "name": "{{name}}",
+    "name2": "{{name}}",
+    "price": "Price",
+    "summary": "Summary",
+    "clear": "Clear cart",
+    "empty": "Your cart is currently empty. <br /> Start <strong>shopping now!</strong>"
+  },
+  "login": {
+    "password": "Password",
+    "guest": "Continue as a guest!",
+    "or": "or",
+    "forget": "Forget your password ?",
+    "login": "Login"
+  },
+  "checkout": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "order": "Your order",
+    "email": "Make sure you have a stable internet connection and a filled-in email, which is required.",
+    "addFirst": "Add ticket to cart first!",
+    "goShop": "Go shopping!"
+  }
+}

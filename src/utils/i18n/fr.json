@@ -1,0 +1,55 @@
+{
+   "log":{
+      "login":"Connexion",
+      "logout":"Déconnexion",
+      "error":"Oups. Une erreur s'est produite. Vérifiez vos informations d'identification et réessayez."
+   },
+   "eventDetails":{
+      "description":"En 2023, NFCtron a déployé ses services dans 417 événements, nous sommes officiellement entrés en Slovaquie et avons étendu les paiements pratiques par carte à certains événements. 2024 sera une année charnière dans l'histoire de NFCtron, avec l'introduction d'une nouvelle application mobile pour les festivaliers, d'outils d'analyse avancés dans le NFCtron Hub et de nouvelles options de billetterie grâce à NFCtron Tickets. En collaboration avec Mastercard, nous ferons avancer les projets NFCtron Nebula et NFCtron Nautilus vers la réalité. Présentation de nouveaux partenariats avec Komerční banka et T-Mobile. Nous distribuerons 12 000 000 CZK entre les festivals pour des projets qui amélioreront l'expérience des visiteurs lors des événements.",
+      "more":"Afficher plus",
+      "less":"Montrer moins",
+      "date":"Dimanche 1 juin 2025 à 14:00",
+      "calendar":"Ajouter au calendrier"
+   },
+   "addCart":{
+      "ticketName":"Billet de base",
+      "ticketName2":"VIP de base",
+      "ticketSeat":"siège",
+      "ticketRow":"rangée",
+      "add":"Ajouter au panier"
+   },
+   "removeCart":"Retirer du panier",
+   "footer":{
+      "checkoutBtn":{
+         "order":"Commande",
+         "checkout":"Checkout"
+      },
+      "total_one":"Total pour {{count}} billet",
+      "total_other":"Total pour {{count}} billets"
+   },
+   "cartMenu":{
+      "row":"Rangée",
+      "seat":"Siège",
+      "name":"Billet de base",
+      "name2":"VIP de base",
+      "price":"Prix",
+      "summary":"Résumé",
+      "clear":"Panier vide",
+      "empty":"Votre panier est actuellement vide. <br /> Commencez à <strong>acheter maintenant!</strong>"
+   },
+   "login":{
+      "password":" Mot de passe",
+      "guest":"Continuez en tant qu'invité !",
+      "or":"ou",
+      "forget":"Vous avez oublié votre mot de passe ?",
+      "login":"Se connecter"
+   },
+   "checkout":{
+      "firstName":"Prénom",
+      "lastName":"Nom de famille",
+      "order":"Votre commande",
+      "email":"Assurez-vous d'avoir une connexion Internet stable et un email renseigné, qui est obligatoire.",
+      "addFirst":"Ajoutez d'abord le billet au panier !",
+      "goShop":"Faites vos achats !"
+   }
+}

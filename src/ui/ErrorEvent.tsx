@@ -1,6 +1,7 @@
-import { Link } from "react-router";
-
-export const Error = () => {
+export const ErrorEvent = () => {
+  function handleReload() {
+    window.location.reload();
+  }
   return (
     <>
       <div className="flex h-screen items-center justify-center">
@@ -11,19 +12,19 @@ export const Error = () => {
             </h1>
 
             <h6 className="mb-2 text-center text-2xl font-bold text-gray-800 md:text-3xl">
-              <span className="text-red-500">Oops!</span> Page Not Found
+              <span className="text-red-500">Oops!</span> Something went wrong!
             </h6>
 
             <p className="mb-4 text-center text-gray-500 md:text-lg">
-              The page you’re looking for doesn’t exist.
+              Please reload the page.
             </p>
 
-            <Link
-              to="/"
+            <button
+              onClick={handleReload}
               className="rounded-md bg-blue-600 px-5 py-2 text-blue-100 hover:bg-blue-700"
             >
               Go home
-            </Link>
+            </button>
           </div>
         </div>
       </div>

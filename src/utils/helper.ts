@@ -1,3 +1,5 @@
+import { EventData } from "../contexts/EventContext";
+
 export const BASE_URL =
   "https://nfctron-frontend-seating-case-study-2024.vercel.app";
 
@@ -21,7 +23,7 @@ export function formatDate(iso: string | undefined) {
   return formatted;
 }
 
-export function convertISOToICalendarFormat(iso: string | undefined) {
+function convertISOToICalendarFormat(iso: string | undefined) {
   if (iso === undefined) return;
 
   const date = new Date(iso);
@@ -34,4 +36,17 @@ export function convertISOToICalendarFormat(iso: string | undefined) {
   const seconds = String(date.getUTCSeconds()).padStart(2, "0");
 
   return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
+}
+
+export function addToCalendar(event: EventData) {
+  const baseUrl = "https://www.google.com/calendar/render";
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: `${event?.namePub}`,
+    dates: `${convertISOToICalendarFormat(event?.dateFrom)}/${convertISOToICalendarFormat(event?.dateTo)}`,
+    details: `${event?.description}`,
+    location: `${event?.place}`,
+  });
+
+  window.open(`${baseUrl}?${params.toString()}`, "_blank");
 }

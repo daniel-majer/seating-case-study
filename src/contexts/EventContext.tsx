@@ -67,8 +67,6 @@ function EventProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  /* console.log(Item); */
-
   useEffect(function () {
     async function fetchData() {
       setIsLoading(true);

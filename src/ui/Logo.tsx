@@ -2,14 +2,15 @@ import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router";
 
 export const Logo = () => {
-  const { isCheckout, checkout } = useCart();
+  const { setIsCheckout, isCheckout } = useCart();
 
   function handleCheckout() {
-    if (isCheckout) {
-      checkout();
-    }
+    if (isCheckout) setIsCheckout();
   }
-
+  /* 
+  useEffect(() => {
+    if (isCheckout) setIsCheckout();
+  }, [isCheckout, setIsCheckout]); */
   return (
     <Link className="inline-block" to="/">
       <svg
@@ -17,8 +18,8 @@ export const Logo = () => {
         width="106.277"
         height="20"
         viewBox="0 0 106.277 20"
+        className="text-[#25196a] transition-all duration-500 dark:text-white"
         onClick={handleCheckout}
-        className="text-[#25196a] dark:text-white transition-all duration-500"
       >
         <g transform="translate(-100.912 -100.154)">
           <path

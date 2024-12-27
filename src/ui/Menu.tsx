@@ -1,109 +1,27 @@
-import { useState, useEffect } from "react";
-import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useUser } from "@/contexts/AuthContext";
 
-import { LoginGreet } from "./LoginGreet";
-import { Box } from "./Box";
-import { Form } from "./Form";
-import { CartIcon } from "./CartIcon";
-import { LangIcon } from "./MultiLanguage";
+import { Greet } from "./Greet";
+import { Cart } from "./Cart";
+import { MultiLanguage } from "./MultiLanguage";
 import { DarkTheme } from "./DarkTheme";
-import { Button } from "./Button";
-import { CartMenu } from "./CartMenu";
-import { Loader } from "./Loader";
-import { useCart } from "@/contexts/CartContext";
-import { useNavigate } from "react-router";
-import { useTranslation } from "react-i18next";
+import { LoginMenu } from "./LoginMenu";
 
 export const Menu = () => {
-  const [isOpenLog, setIsOpenLog] = useState(false);
-  const [isOpenCart, setIsOpenCart] = useState(false);
-
-  const { user, isAuthenticated, isLoading, logout, isError } = useUser();
-  const { checkout, isCheckout } = useCart();
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-
-  useEffect(
-    function () {
-      if (isAuthenticated) setIsOpenLog(() => false);
-    },
-    [isAuthenticated],
-  );
-
-  useOutsideClick({
-    setIsOpenLog,
-    isOpenLog,
-    isOpenCart,
-    setIsOpenCart,
-  });
-
-  const handleToggleLog = () => {
-    if (isOpenCart) setIsOpenCart(false);
-    setIsOpenLog((prev) => !prev);
-  };
-
-  const handleToggleCart = () => {
-    if (isOpenLog) setIsOpenLog(false);
-    setIsOpenCart((prev) => !prev);
-  };
-
-  function handleLogout(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    if (isCheckout) {
-      navigate("/");
-      checkout();
-    }
-
-    setIsOpenLog(false);
-    logout();
-  }
+  const { isAuthenticated } = useUser();
 
   return (
     <>
-      <LangIcon />
+      <MultiLanguage />
       <DarkTheme />
-      <CartIcon onSetCart={handleToggleCart} />
-
-      {isOpenCart && (
-        <Box type="cart">
-          <CartMenu />
-        </Box>
-      )}
+      <Cart />
 
       {isAuthenticated ? (
         <>
-          <LoginGreet onSetToggle={handleToggleLog} />
-
-          {isOpenLog && (
-            <Box type="logout">
-              <span className="mb-2 inline-block break-all">{user?.email}</span>
-              <Button width="full" onClick={handleLogout}>
-                {t("log.logout")}
-              </Button>
-            </Box>
-          )}
+          <Greet />
         </>
       ) : (
-        <>
-          <Button onClick={handleToggleLog}> {t("log.login")}</Button>
-          {isOpenLog && (
-            <Box type="login">
-              {isLoading && !isError ? <Loader /> : <Form />}
-              {isError && <p className="pt-2"> {t("log.error")}</p>}
-            </Box>
-          )}
-        </>
+        <LoginMenu />
       )}
     </>
   );
 };
-/* 
-    {
-      "id": "12b7b37f-6ee2-4513-ac40-b55eb676319b",
-      "name": "Regular ticket",
-      "price": 1000
-      "seatRow": 1,
-      "place": 1,
-    }
-*/
