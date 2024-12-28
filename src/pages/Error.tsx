@@ -11,7 +11,8 @@ export const Error = () => {
             </h1>
 
             <h6 className="mb-2 text-center text-2xl font-bold text-gray-800 md:text-3xl">
-              <span className="text-red-500">Oops!</span> Page Not Found
+              <span className="text-red-500">Oops!</span>
+              <span className="dark:text-white">Page Not Found</span>
             </h6>
 
             <p className="mb-4 text-center text-gray-500 md:text-lg">

@@ -16,10 +16,10 @@ export const Footer = () => {
     navigate("/checkout");
   }
 
-  if (!tickets.length || isCheckout) return "";
-
   return (
-    <footer className="sticky bottom-0 left-0 right-0 z-[100] flex justify-center border-t border-zinc-200 bg-white transition-all duration-500 ease-in-out dark:border-slate-400 dark:bg-slate-600 dark:text-white">
+    <footer
+      className={`sticky bottom-0 left-0 right-0 z-[100] justify-center border-t border-zinc-200 bg-white transition-all duration-500 ease-in-out dark:border-slate-400 dark:bg-slate-600 dark:text-white ${!tickets.length || isCheckout ? "hidden" : "flex"}`}
+    >
       {/* inner content */}
       <div className="flex max-w-screen-xl grow items-center justify-between gap-4 p-2 sm:p-6">
         {/* total in cart state */}

@@ -2,7 +2,7 @@
    "log":{
       "login":"Přihlásit",
       "logout":"Odhlásit",
-      "error":"Oops. Došlo k chybě. Zkontrolujte své údaje a zkuste to znovu."
+      "error":"Oops. Došlo k chybě. Zkontrolujte své údaje, internetové připojení a zkuste to znovu."
    },
    "eventDetails":{
       "description":"{{eventDescription}}",

@@ -11,7 +11,7 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 export const Greet = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useUser();
-  const { isCheckout } = useCart();
+  const { isCheckout, setIsCheckout } = useCart();
   const navigate = useNavigate();
   const { t } = useTranslation();
   useOutsideClick({
@@ -28,6 +28,7 @@ export const Greet = () => {
     e.preventDefault();
     if (isCheckout) {
       navigate("/");
+      setIsCheckout();
     }
     setIsOpen(false);
     logout();

@@ -7,10 +7,7 @@ export const Logo = () => {
   function handleCheckout() {
     if (isCheckout) setIsCheckout();
   }
-  /* 
-  useEffect(() => {
-    if (isCheckout) setIsCheckout();
-  }, [isCheckout, setIsCheckout]); */
+
   return (
     <Link className="inline-block" to="/">
       <svg

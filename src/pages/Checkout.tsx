@@ -77,7 +77,7 @@ export const Checkout = () => {
 
   if (successMessage) {
     return (
-      <p className="grid flex-1 place-items-center text-lg transition duration-500 dark:text-white sm:text-4xl">
+      <p className="grid flex-1 place-items-center text-center text-2xl transition duration-500 dark:text-white sm:text-4xl">
         {successMessage}
       </p>
     );
@@ -96,37 +96,41 @@ export const Checkout = () => {
     );
   }
 
-  if (isLoading) return <Loader />;
-
   return (
-    <main className="flex w-full max-w-screen-xl grow flex-col self-center p-2 text-slate-900 transition duration-500 sm:p-4">
-      <CheckoutForm isError={isError}>
-        <Input
-          type="email"
-          label="email"
-          placeholder="Email"
-          onSet={setEmail}
-          value={email}
-        />
-        <Input
-          type="text"
-          label="first"
-          placeholder={t("checkout.firstName")}
-          onSet={setFirstName}
-          value={firstName}
-        />
-        <Input
-          type="text"
-          label="last"
-          placeholder={t("checkout.lastName")}
-          onSet={setLastName}
-          value={lastName}
-        />
-      </CheckoutForm>
+    <main className="flex w-full max-w-screen-xl grow flex-col self-center p-2 text-slate-900 transition duration-500 dark:bg-slate-800 sm:p-4">
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <CheckoutForm isError={isError}>
+            <Input
+              type="email"
+              label="email"
+              placeholder="Email"
+              onSet={setEmail}
+              value={email}
+            />
+            <Input
+              type="text"
+              label="first"
+              placeholder={t("checkout.firstName")}
+              onSet={setFirstName}
+              value={firstName}
+            />
+            <Input
+              type="text"
+              label="last"
+              placeholder={t("checkout.lastName")}
+              onSet={setLastName}
+              value={lastName}
+            />
+          </CheckoutForm>
 
-      <CheckoutDetails />
+          <CheckoutDetails />
+        </>
+      )}
 
-      <CheckoutFooter sendOrder={sendOrder} />
+      <CheckoutFooter sendOrder={sendOrder} isLoading={isLoading} />
     </main>
   );
 };

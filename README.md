@@ -1,79 +1,95 @@
-# 🧑🏻‍🚀 NFCtron Frontend Case Study (Seating)
+# 💻 NFCtron Frontend Case Study (Seating)
 
-> 👋 Vítejte u zadání pro kandidáty na pozici ⚛️ **Frontend Developer** v NFCtron! Vaším úkolem bude
-> dokončit jednoduchou React aplikaci pro nákup vstupenek na akci.
+> 👋 Tento projekt pre pozíciu ⚛️ **Frontend Developer** v **NFCtron** zahŕňal dokončenie **React** aplikácie pre nákup vstupeniek. Mojou úlohou bolo vytvoriť funkčnú, prehľadnú a používateľsky prívetivú aplikáciu s čistým kódom, využívajúc React, správu stavu a tvorbu UI komponentov. 🚀
 
-## 🎯 Úvod
+## 🔹High-Level popis aplikácie
 
-Předpřipravili jsme pro vás základ aplikace s přednastavenými nástroji a hlavním layoutem (neznamená to ale však že jej nemůžete upravit dle vlastního uvážení).
-Zaroveň pro aplikaci existují připravené [API endpointy](./API.md), které budou potřebné pro získání dat k zobrazení.
+Táto jednoduchá **SPA (Single Page Application)** umožňuje nákup vstupeniek na podujatie s intuitívnym rozhraním. Užívatelia môžu prehliadať mapu sedadiel, pridávať alebo odoberať vstupenky z košíka, sledovať cenu, prihlásiť sa a dokončiť objednávku vyplnením údajov, s možnosťou pokračovať ako hosť. Po odoslaní objednávky sa zobrazí potvrdenie alebo informácia o chybe. Aplikácia ponúka aj rozšírenia, ako **multilanguage, dark mode, časovač v checkoute, pridanie podujatia do kalendára a správu košíka priamo v menu**, čím zlepšuje užívateľský zážitok.
 
-**👉🏻 Vaší úlohou bude aplikaci funkčně dokončit.**
+|             Light mode             |             Dark mode             |
+| :--------------------------------: | :-------------------------------: |
+| ![Base Layout](./light-layout.png) | ![Base Layout](./dark-layout.png) |
 
-### High-Level popis aplikace
+## 🔹 Features
 
-Aplikace by měla být jednoduchá SPA, která umožní zobrazit detail akce s mapou dostupných sedadel .
-Uživatel si po příchodu může prohlížet sedadla a libovolně je do svého nákupního košíku přidávat či naopak z něj odebírat.
-V tomto kroce má uživatel přehled o počtu vstupenek v košíku a jejich celkové hodnotě.
-Před dokončením objednávky je uživatel vyzván k vyplnění potřebných údajů, v případě že nevyužil možnost přihlášení se do svého účtu.
-Odesláním objednávky je pak uživatel informován o jejím vytvoření či případné chybě a tímto krokem je scope aplikace uzavřen.
+- [x] možnosť prepínať medzi **dark a light mode**
+- [x] možnosť prepínať medzi 4 jazykmi **(cz, en, fr, de)**
+- [x] možnosť vymazať vstupenku z košíka v menu
+- [x] možnosť pridať udalosť do **Google kalendára**
+- [x] možnosť **login/logout** alebo pokračovať ako **"hosť"**
+- [x] onepage **detail udalosti** získaný z API
+- [x] mapa dostupných sedadiel **(rada, sedadlo) z API**
+- [x] **pridanie / odobranie sedadla** z košíka po kliknutí
+- [x] aktuálny počet vstupeniek v košíku a ich celková hodnota
+- [x] 5 minutový **časovač** v checkout zóne
+- [x] **vytvorenie objednávky** cez API a zobrazenie výsledku (úspech/chyba)
+- [x] **responzivita** na mobilných zariadeniach
 
-![Base Layout](./base-layout.png)
+## 🔹Technológie
 
-## 🌱 Požadavky na Funkčnost
+- language: **Typescript**
+- framework: **React**
+- UI: **Tailwindcss, Radix UI, Lucide Icons**
+- routing: **React Router**
+- state management: **context API + reducer hook**
+- performance: **Suspense + lazy loading**
+- multilanguage: **React i18next**
 
-Aplikace by měla být schopna:
+## 🔹Postup
 
--   [ ] Zobrazit onepage detail akce s relevantními údaji z API (obrázek, název, popis, datum, ...)
--   [ ] Zobrazit mapu dostupných sedadel (řada, sedadlo) z API.
-    -   zde není třeba mapu vykreslovat optimalizovaně, např. pomocí Canvas API/SVG, postačí jako HTML prvky
-    -   pozor na pořadí sedadel (ne vždy přijdou všechna sedadla po sobě 👀)
--   [ ] Po kliku na sedadlo umožnit jeho přidání do košíku (případně odebrání, pokud je již v košíku).
--   [ ] Spravovat obsah košíku s využitím promyšleného state managementu.
--   [ ] Zobrazit aktuální počet vstupenek v košíku a jejich celkovou hodnotu (ve správné měně a formátu).
--   [ ] Po kliknutí na "Koupit vstupenky" umožnit přihlášení nebo vyplnění potřebných údajů jako "host".
--   [ ] Vytvořit objednávku skrze API a zobrazit výsledek (úspěch nebo chybu).
+### 👤 Header
 
-## 🌟 Bonusové Funkce
+Header aplikácie obsahuje **logo, title a menu**. Title je získavaný z API. Menu je tvorené zo 4 features → **multilanguage, dark mode, cart a login**.
 
--   [ ] Umožnit přidání akce do kalendáře.
--   [ ] Multijazyčnost aplikace.
+Keďže sa jednalo o malú aplikáciu a potrboval som **viacero globálnych stavov**, tak pre **state management** v celej aplikácii som sa rozhodol použiť **context API** spolu s **useReducer hook**. Ak by bola aplikácia väčšia a potreboval by som viac rôznych a komplexnejších "state managements", tak použil by som **RTK (Redux Toolkit)**. Týmto spôsobom by som zamedzil vzniku tzv. "context hell".
 
-_A dalším vychytávkám se meze nekladou! Ukažte, co umíte! 💫_
+Pre **multilanguage** feature som použil package **React-18next**.
 
-## ☝🏻 Dobré vědět
+Pre správu **tmavého režimu** som aplikoval vlastný **custom hook**, ktorý prepína medzi light a dark režimom.
 
--   Předpokládaná časová náročnost jsou **2-4 hodiny** čistého času (dle zkušenosti).
--   Aplikace musí být psána v jazyce **TypeScript**.
--   Využití jiných knihoven není zakázáno, naopak **je doporučeno**.
--   Ve výchozím kódu aplikace lze dělat naprosto libovolné změny.
--   Dbejte na kvalitu kódu, jeho čitelnost a strukturu.
+**Košík** obsahuje pridané vstupenky - v prípade, že je prázdny, tak obsahuje hlášku v zmysle "váš košík je prázdny". Je tam možnosť mazať vstupenky z košíka po jednom alebo **zmazať celý košík** na jeden klik. Tiež ak sa user nachádza v poslednej fáze - v checkout zóne, tak cart ma vyššie spomenuté funkcia vypnuté a nie je možné ním manipulovať. Tiež po úspešnom odoslaní objednávky sa košík **resetuje**.
 
-## 📋 Kritéria Hodnocení
+**Login/Logout** je riešený pomocou context API, kde ak user zadá nesprávne prihlasovacie údaje alebo stratí internetové pripojenie dostane chybovú hlášku.
 
--   Funkčnost a splnění funkčních požadavků.
--   Vzhled aplikace a responzivita na mobilních zařízeních.
--   Práce s daty, state management a volání API.
--   Kvalita, struktura a komentování/dokumentace kódu.
--   Práce s Git.
-
-## 🪜 Jak postupovat?
-
-1. Udělejte si fork tohoto repozitáře.
-2. Nastavte si své oblíbené vývojové prostředí.
-3. Dokončete úkol dle požadavků a zadání výše.
-4. Průběžně commitujte a pushujte své změny.
-5. Otestujte řádně svou aplikaci.
-6. Jakékoliv komentáře, či doplnění informací/dokumentace k vaší práci uvítáme v souboru `COMMENTS.md`.
-7. Svou aplikaci ideálně nasaďte na nějaký hosting (doporučujeme ▲ Vercel).
-8. Po dokončení úkolu zašlete na email [ditrich@nfctron.com](mailto:ditrich@nfctron.com):
-    - odkaz na Váš repozitář,
-    - a odkaz na nasazenou aplikaci.
-
-📧 Máte-li jakékoli dotazy nebo potřebujete pomoci, neváhejte se na nás obrátit.
+- Email: frontend@nfctron.com
+- Password: Nfctron2025
 
 ---
 
-Přejeme vám hodně štěstí a těšíme se na vaše řešení! 🌟
+### 🎫 Main
 
-_–– Tým NFCtron_
+Hlavná časť aplikácie je rozdelená na 2 časti:
+
+1. výber miesta na sedenie
+2. detaily udalostí s možnosťou pridania do Google kalendára
+
+Všetky informácie o sedení a o udalosti sú stiahnuté z API a následne renderované do stránky. Miesta vyplnené červenou farbou znázorňujú obsadené miesta. Po kliknutí na miesto má user možnosť pridať alebo odobrať miesto z košíka.
+
+Popis udalosti využíva efektívne **rozbaľovanie textu**.
+
+Udalosť pridať do kalendára je možná ak sa user prihlási do svojho Google účtu, v tom prípade si môže udalosť pridať do svojho **Google kalendára**.
+
+**Footer** obsahuje výslednú cenu, počet vstupeniek v košíku a tlačidlo **Checkout**. Tiež sa zobrazuje len v prípade ak je v košíku aspoň jedna položka.
+
+**Checkout button** ponúka 2 možnosti:
+
+1. ak je user prihlásený, tak ho presmeruje rovno do checkout zóny
+2. ak nie je prihlásený, tak bude presmerovaný na novú route → /login
+
+V **login page** sa user môže prihlásiť pomocou svojich údajov alebo pokračovať ako **hosť**. Ak sa prihlási, tak inputy v checkout sa automaticky vyplnia podľa login údajov daného používateľa.
+
+---
+
+### 🛒 Checkout
+
+Checkout zóna obsahuje polia na vyplnenie, ktoré sa odošlú na server. Chybová hláška sa zobrazí v prípade, že user nevyplní email, ktorý je povinný alebo stratí internetové spojenie.
+
+Ak sa user odhlási počas toho ako je v checkout zóne, tak systém ho vyhodí z checkout a presmeruje na domovskú stránku.
+
+**Timer** je nastavený na 5 minút, ak vyprší, tak user bude presmerovaný na domovskú stránku a košík sa restuje.
+
+Ak je odoslanie úspešne, tak user dostane správu o úspešnom odoslaní, košík sa resetuje a tým je celý **scope ukončený**.
+
+---
+
+_–– by Daniel 👨🏻‍💻_

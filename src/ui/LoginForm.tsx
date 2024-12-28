@@ -5,8 +5,8 @@ import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState("frontend@nfctron.com");
-  const [password, setPassword] = useState("Nfctron2025");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { t } = useTranslation();
 
   const { login } = useUser();

@@ -84,14 +84,8 @@ function EventProvider({ children }: { children: ReactNode }) {
 
         setEvent(data);
         setTickets(data2);
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          console.log(error.message);
-          setIsError(true);
-        } else {
-          console.log("An unknown error occurred");
-          setIsError(true);
-        }
+      } catch (error) {
+        setIsError(true);
       } finally {
         setIsLoading(false);
       }
