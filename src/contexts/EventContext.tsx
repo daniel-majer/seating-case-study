@@ -81,7 +81,6 @@ function EventProvider({ children }: { children: ReactNode }) {
         );
         if (!res2.ok) throw new Error("Something went wrong");
         const data2 = await res2.json();
-
         setEvent(data);
         setTickets(data2);
       } catch (error) {

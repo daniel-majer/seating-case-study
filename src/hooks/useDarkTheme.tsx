@@ -14,7 +14,8 @@ const getInitialTheme = () => {
 };
 
 const useDarkTheme = (): UseDarkThemeReturn => {
-  const [isDarkTheme, setIsDarkTheme] = useState(() => getInitialTheme());
+  // const [isDarkTheme, setIsDarkTheme] = useState(() => getInitialTheme());
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const handleTheme = () => {
     const newTheme = !isDarkTheme;

@@ -1,10 +1,12 @@
+import { ComponentProps } from "react";
+
 type InputProps = {
   type: string;
   placeholder: string;
   onSet: (input: string) => void;
   value?: string;
   label: string;
-};
+} & ComponentProps<"input">;
 
 export const Input = ({
   type,
@@ -12,6 +14,7 @@ export const Input = ({
   onSet,
   value,
   label,
+  ...props
 }: InputProps) => {
   return (
     <div>
@@ -21,11 +24,12 @@ export const Input = ({
       <input
         id={label}
         onChange={(event) => onSet(event.target.value)}
-        className="w-full rounded-lg border border-gray-300 p-3 text-xs shadow-md duration-500 ease-in-out placeholder:text-xs focus:scale-105 sm:text-base sm:placeholder:text-base dark:text-slate-900"
+        className="w-full rounded-lg border border-gray-300 p-3 text-xs shadow-md duration-500 ease-in-out placeholder:text-xs focus:scale-105 dark:text-slate-900 sm:text-base sm:placeholder:text-base"
         type={type}
         placeholder={placeholder}
         required
         value={value}
+        {...props}
       />
     </div>
   );

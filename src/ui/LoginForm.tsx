@@ -13,23 +13,25 @@ export const LoginForm = () => {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const email = "frontend@nfctron.com";
+    const password = "Nfctron2025";
     login(email, password);
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
       <Input
+        defaultValue="frontend@nfctron.com"
         label="email"
         type="email"
         placeholder="Email"
-        value={email}
         onSet={setEmail}
       />
       <Input
+        defaultValue="Nfctron2025"
         label="password"
         type="password"
         placeholder={t("login.password")}
-        value={password}
         onSet={setPassword}
       />
       <a
